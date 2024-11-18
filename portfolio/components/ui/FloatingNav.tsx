@@ -1,5 +1,6 @@
 "use client";
 import React, { useState } from "react";
+import { hydrateRoot } from "react-dom/client";
 import {
   motion,
   AnimatePresence,
@@ -8,6 +9,12 @@ import {
 } from "framer-motion";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
+
+// Fix hydration
+const domNode = document.getElementById("root");
+if (domNode) {
+  const root = hydrateRoot(domNode, reactNode);
+}
 
 export const FloatingNav = ({
   navItems,
